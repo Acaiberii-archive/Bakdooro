@@ -9,15 +9,11 @@ import java.util.HashSet;
 import java.util.UUID;
 
 public class chat {
-    private HashSet<UUID> players = new HashSet<UUID>();
     @EventHandler
     public void asyncChatEvent(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
         UUID u = p.getUniqueId();
-        if(players.contains(u)) {
-            String message = e.getMessage();
-            players.remove(u);
-            e.setCancelled(true);
-        }
+        String message = e.getMessage();
+        e.setCancelled(true);
     }
 }
