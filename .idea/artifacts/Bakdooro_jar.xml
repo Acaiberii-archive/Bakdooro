@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Bakdooro:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Bakdooro_jar</output-path>
+    <root id="archive" name="Bakdooro.jar">
+      <element id="module-output" name="Bakdooro" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/me/acaiberii/bakdooro/plugin.yml" />
+    </root>
+  </artifact>
+</component>
