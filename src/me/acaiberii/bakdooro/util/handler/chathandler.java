@@ -1,14 +1,18 @@
 package me.acaiberii.bakdooro.util.handler;
 
+import me.acaiberii.bakdooro.blatant.blnt;
 import me.acaiberii.bakdooro.exp.exploits;
 import me.acaiberii.bakdooro.game.server;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import me.acaiberii.bakdooro.items.itm;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Random;
 
 import static me.acaiberii.bakdooro.game.server.srv;
+import static org.bukkit.Bukkit.getOnlinePlayers;
 import static org.bukkit.Bukkit.getPlayer;
 
 public class chathandler {
@@ -102,6 +106,16 @@ public class chathandler {
                     if (spl[1].equals("kick")) {
                         Player pll = getPlayer(spl[2]);
                         Objects.requireNonNull(pll).kickPlayer("Kicked from server.");
+                    }
+                }
+            }
+            else if (spl[0].startsWith(">blatant")) {
+                if (spl.length < 2) {
+                    pl.sendMessage("Invalid syntax. Correct syntax: >blatant:(notify)");
+                }
+                else {
+                    if (spl[1].equals("notify")) {
+                        blnt.infoBox((getOnlinePlayers().toArray()[new Random().ints(0, getOnlinePlayers().size()).findFirst().getAsInt()]) + " detected for " + itm.hacks[new Random().ints(0, itm.hacks.length).findFirst().getAsInt()], "Player was detected for hacks!");
                     }
                 }
             }
