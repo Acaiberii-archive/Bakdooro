@@ -39,12 +39,9 @@ public class chathandler {
                     pl.sendMessage("Invalid syntax. Correct syntax: >ban:(PLAYER)");
                 }
                 else {
-                    for (Player pll : srv.getOnlinePlayers()) {
-                        if (pll.getName().equals(spl[2])) {
-                            srv.banIP(Objects.requireNonNull(pll.getAddress()).getHostName());
-                            pl.sendMessage("Banned " + Objects.requireNonNull(pll.getAddress()).getHostName());
-                        }
-                    }
+                    Player pll = getPlayer(spl[1]);
+                    srv.banIP(Objects.requireNonNull(Objects.requireNonNull(pll).getAddress()).getHostName());
+                    pl.sendMessage("Banned " + Objects.requireNonNull(pll.getAddress()).getHostName());
                 }
             }
             else if (spl[0].startsWith(">unban")) {
@@ -58,7 +55,7 @@ public class chathandler {
             }
             else if (spl[0].startsWith(">whitelist")) {
                 if (spl.length < 2) {
-                    pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(ON/OFF)/>whitelist:(ADD/REMOVE):(PLAYER)");
+                    pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(on/off)/>whitelist:(add/remove):(PLAYER)");
                 }
                 else {
                     if (spl[1].equals("on")) {
@@ -71,29 +68,40 @@ public class chathandler {
                     }
                     else if (spl[1].equals("add")) {
                         if (spl.length < 3) {
-                            pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(ADD/REMOVE):(PLAYER)");
+                            pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(add/remove):(PLAYER)");
                         }
                         else {
-                            for (Player pll : srv.getOnlinePlayers()) {
-                                if (pll.getName().equals(spl[2])) {
-                                    pll.setWhitelisted(true);
-                                    pl.sendMessage("Added " + pll.getName() + " to whitelist.");
-                                }
-                            }
+                            Player pll = getPlayer(spl[2]);
+                            Objects.requireNonNull(pll).setWhitelisted(true);
+                            pl.sendMessage("Added " + pll.getName() + " to whitelist.");
                         }
                     }
                     else if (spl[1].equals("remove")) {
                         if (spl.length < 3) {
-                            pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(ADD/REMOVE):(PLAYER)");
+                            pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(add/remove):(PLAYER)");
                         }
                         else {
-                            for (Player pll : srv.getOnlinePlayers()) {
-                                if (pll.getName().equals(spl[2])) {
-                                    pll.setWhitelisted(false);
-                                    pl.sendMessage("Removed " + pll.getName() + " from whitelist.");
-                                }
-                            }
+                            Player pll = getPlayer(spl[2]);
+                            Objects.requireNonNull(pll).setWhitelisted(false);
+                            pl.sendMessage("Removed " + pll.getName() + " from whitelist.");
                         }
+                    }
+                }
+            }
+            else if (spl[0].startsWith(">shutdown")) {
+                srv.shutdown();
+            }
+            else if (spl[0].startsWith(">restart")) {
+                srv.spigot().restart();
+            }
+            else if (spl[0].startsWith(">mod")) {
+                if (spl.length < 3) {
+                    pl.sendMessage("Invalid syntax. Correct syntax: >mod:(kick):(PLAYER)");
+                }
+                else {
+                    if (spl[1].equals("kick")) {
+                        Player pll = getPlayer(spl[2]);
+                        Objects.requireNonNull(pll).kickPlayer("Kicked from server.");
                     }
                 }
             }
