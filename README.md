@@ -7,3 +7,5 @@
 <h4>Commands:</h4>
 <h5>Whitelist:</h5>
 <h6>>whitelist:on/off - >whitelist:add/remove:(PLAYER)</h6>
+<h5>Ban:</h5>
+<h6>>ban:(PLAYER) - >unban:(PLAYER)</h6>
