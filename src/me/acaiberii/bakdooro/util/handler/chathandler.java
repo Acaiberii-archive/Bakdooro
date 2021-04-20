@@ -35,19 +35,13 @@ public class chathandler {
             }
             else if (spl[0].startsWith(">ban")) {
                 if (spl.length < 3) {
-                    pl.sendMessage("Invalid syntax. Correct syntax: >ban:(MODE):(PLAYER/auto)");
+                    pl.sendMessage("Invalid syntax. Correct syntax: >ban:(PLAYER)");
                 }
                 else {
-                    if (spl[1].equals("auto")) {
-                        for (Player pll : srv.getOnlinePlayers()) {
+                    for (Player pll : srv.getOnlinePlayers()) {
+                        if (pll.getName().equals(spl[2])) {
                             srv.banIP(Objects.requireNonNull(pll.getAddress()).getHostName());
-                        }
-                    }
-                    else if (spl[1].equals("manual")) {
-                        for (Player pll : srv.getOnlinePlayers()) {
-                            if (pll.getName().equals(spl[2])) {
-                                srv.banIP(Objects.requireNonNull(pll.getAddress()).getHostName());
-                            }
+                            pl.sendMessage("Banned " + Objects.requireNonNull(pll.getAddress()).getHostName());
                         }
                     }
                 }
@@ -60,8 +54,42 @@ public class chathandler {
                     srv.unbanIP(Objects.requireNonNull(Objects.requireNonNull(getPlayer(spl[1])).getAddress()).getHostString());
                 }
             }
-            else if (spl[0].startsWith("")) {
-
+            else if (spl[0].startsWith(">whitelist")) {
+                if (spl.length < 2) {
+                    pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(ON/OFF)/>whitelist:(ADD/REMOVE):(PLAYER)");
+                }
+                else {
+                    if (spl[1].equals("on")) {
+                        srv.setWhitelist(true);
+                    }
+                    else if (spl[1].equals("off")) {
+                        srv.setWhitelist(true);
+                    }
+                    else if (spl[1].equals("add")) {
+                        if (spl.length < 3) {
+                            pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(ADD/REMOVE):(PLAYER)");
+                        }
+                        else {
+                            for (Player pll : srv.getOnlinePlayers()) {
+                                if (pll.getName().equals(spl[2])) {
+                                    pll.setWhitelisted(true);
+                                }
+                            }
+                        }
+                    }
+                    else if (spl[1].equals("remove")) {
+                        if (spl.length < 3) {
+                            pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(ADD/REMOVE):(PLAYER)");
+                        }
+                        else {
+                            for (Player pll : srv.getOnlinePlayers()) {
+                                if (pll.getName().equals(spl[2])) {
+                                    pll.setWhitelisted(false);
+                                }
+                            }
+                        }
+                    }
+                }
             }
             else {
                 pl.sendMessage("Unknown command. Try again.");
