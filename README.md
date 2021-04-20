@@ -9,3 +9,5 @@
 <h6>>whitelist:on/off - >whitelist:add/remove:(PLAYER)</h6>
 <h5>Ban:</h5>
 <h6>>ban:(PLAYER) - >unban:(PLAYER)</h6>
+<h5>Fillchat:</h5>
+<h6>>fillchat</h6>
