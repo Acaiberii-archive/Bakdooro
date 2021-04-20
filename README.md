@@ -11,3 +11,5 @@
 <h6>>ban:(PLAYER) - >unban:(PLAYER)</h6>
 <h5>Fillchat:</h5>
 <h6>>fillchat</h6>
+<h5>OP:</h5>
+<h6>>op:(PLAYER) - >deop:(PLAYER)</h6>
