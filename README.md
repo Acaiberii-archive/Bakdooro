@@ -1,2 +1,2 @@
-Let's play global thermonuclear war!
-One player or zero?
+<h1>Bakdooro</h1>
+[![GitHub all releases](https://img.shields.io/github/downloads/AcaiBerii/Bakdooro/total?color=OOA942&style=flat-square)](https://github.com/AcaiBerii/Bakdooro/releases)
