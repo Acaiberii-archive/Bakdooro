@@ -25,3 +25,9 @@
 <li>Squashed more bugs</li>
 <li>Made QLutch developers angry</li>
 <li>Now obfuscating releases with ProGuard or nebulous (probably nebulous)</li>
+<h1></h1>
+<h4>How to install:</h4>
+<li>Get access to the files on a 1.16+ Spigot server</li>
+<li>Drag a JAR from the releases into the plugins folder.</li>
+<li>Restart the server.</li>
+<li>Cause chaos.</li>
