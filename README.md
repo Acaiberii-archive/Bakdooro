@@ -24,3 +24,4 @@
 <li>Added command system</li>
 <li>Squashed more bugs</li>
 <li>Made QLutch developers angry</li>
+<li>Now obfuscating releases with ProGuard or nebulous (probably nebulous)</li>
