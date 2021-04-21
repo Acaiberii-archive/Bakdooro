@@ -16,3 +16,8 @@
 <h1></h1>
 <h4>Want to rename?</h4>
 <h5>Open the project in IDEA, add spigot shaded (<a href="https://www.spigotmc.org/wiki/creating-a-blank-spigot-plugin-in-intellij-idea/">Spigot</a> has a good tutorial on how to set up a plugin project), and refactor everything mentioning bakdooro. Also change plugin.yml to your liking.</h5>
+
+<h4>Changelogs:</h4>
+<li>Organized modules into packages</li>
+<li>Added working chathandler and chat events</li>
+<li>Added annoying and blatant modules</li>
