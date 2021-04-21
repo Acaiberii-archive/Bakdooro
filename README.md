@@ -31,3 +31,6 @@
 <li>Drag a JAR from the releases into the plugins folder.</li>
 <li>Restart the server.</li>
 <li>Cause chaos.</li>
+<h1></h1>
+<h4>Other:</h4>
+This plugin has been proven to be silent unless you use blatant modules.
