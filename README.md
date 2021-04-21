@@ -33,4 +33,4 @@
 <li>Cause chaos.</li>
 <h1></h1>
 <h4>Other:</h4>
-This plugin has been proven to be silent unless you use blatant modules.
+This plugin has been proven to be silent and invisible unless you use blatant modules.
