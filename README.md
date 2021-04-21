@@ -21,3 +21,6 @@
 <li>Organized modules into packages</li>
 <li>Added working chathandler and chat events</li>
 <li>Added annoying and blatant modules</li>
+<li>Added command system</li>
+<li>Squashed more bugs</li>
+<li>Made QLutch developers angry</li>
