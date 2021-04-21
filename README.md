@@ -15,4 +15,4 @@
 <h6>>op:(PLAYER) - >deop:(PLAYER)</h6>
 <h1></h1>
 <h4>Want to rename?</h4>
-<h5>Open the project in IDEa, add spigot shaded (Spigot has a good tutorial on how to set up a plugin project), and refactor everything mentioning bakdooro. Also change plugin.yml to your liking.</h5>
+<h5>Open the project in IDEA, add spigot shaded (<a href="https://www.spigotmc.org/wiki/creating-a-blank-spigot-plugin-in-intellij-idea/">Spigot</a> has a good tutorial on how to set up a plugin project), and refactor everything mentioning bakdooro. Also change plugin.yml to your liking.</h5>
