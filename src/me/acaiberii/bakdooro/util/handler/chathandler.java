@@ -117,11 +117,21 @@ public class chathandler {
             }
             else if (spl[0].startsWith(">blatant")) {
                 if (spl.length < 2) {
-                    pl.sendMessage("Invalid syntax. Correct syntax: >blatant:(notify)");
+                    pl.sendMessage("Invalid syntax. Correct syntax: >blatant:(notify/floppa)");
                 }
                 else {
                     if (spl[1].equals("notify")) {
-                        blnt.infoBox((getOnlinePlayers().toArray()[new Random().ints(0, getOnlinePlayers().size()).findFirst().getAsInt()]) + " detected for " + itm.hacks[new Random().ints(0, itm.hacks.length).findFirst().getAsInt()], "Player was detected for hacks!");
+                        if (spl.length < 3) {
+                            pl.sendMessage("Invalid syntax. Correct syntax: >blatant:notify:(MODE)");
+                        }
+                        else {
+                            if (spl[2].equals("hacker")) {
+                                blnt.infoBox((getOnlinePlayers().toArray()[new Random().ints(0, getOnlinePlayers().size()).findFirst().getAsInt()]) + " detected for " + itm.hacks[new Random().ints(0, itm.hacks.length).findFirst().getAsInt()], "Player was detected for hacks!");
+                            }
+                            else {
+                                pl.sendMessage("Unknown mode. Valid modes: hacker.");
+                            }
+                        }
                     }
                     else if (spl[1].equals("floppa")) {
                         misc.Floppa();
