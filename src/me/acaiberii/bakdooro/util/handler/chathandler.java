@@ -133,7 +133,7 @@ public class chathandler {
                                 blnt.infoBox("Still using this computer?", "lol");
                             }
                             else {
-                                pl.sendMessage("Unknown mode. Valid modes: hacker, givemeclout.");
+                                pl.sendMessage("Unknown mode. Valid modes: hacker, givemeclout, annoy.");
                             }
                         }
                     }
