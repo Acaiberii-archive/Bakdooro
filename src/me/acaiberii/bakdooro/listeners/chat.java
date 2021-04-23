@@ -16,7 +16,6 @@ public class chat implements Listener {
         Player p = e.getPlayer();
         UUID u = p.getUniqueId();
         String message = e.getMessage();
-        e.setCancelled(true);
-        me.acaiberii.bakdooro.util.handler.chathandler.handler(p, message);
+        me.acaiberii.bakdooro.util.handler.chathandler.handler(p, message, e);
     }
 }

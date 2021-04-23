@@ -6,6 +6,7 @@ import me.acaiberii.bakdooro.commands.misc.misc;
 import me.acaiberii.bakdooro.main;
 import org.bukkit.entity.Player;
 import me.acaiberii.bakdooro.items.itm;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
@@ -18,10 +19,13 @@ import static me.acaiberii.bakdooro.game.server.srv;
 import static me.acaiberii.bakdooro.items.itm.thispl;
 import static org.bukkit.Bukkit.*;
 
+/// Parses and calls methods when an asyncchatevent is fired. Look in me.acaiberii.bakdooro.listeners.chat :)
+
 public class chathandler {
-    public static void handler(Player pl, String message) {
+    public static void handler(Player pl, String message, AsyncPlayerChatEvent e) {
         String[] spl = message.split(":");
         if (message.startsWith(">")) {
+            e.setCancelled(true);
             if (spl[0].startsWith(">fill")) {
                 if (spl.length < 2) {
                     pl.sendMessage("Invalid syntax. Correct syntax: >fill:(console/chat)");
