@@ -107,11 +107,11 @@ public class chathandler {
                 else {
                     if (spl[1].equals("on")) {
                         srv.setWhitelist(true);
-                        pl.sendMessage("Whitelist off.");
+                        pl.sendMessage("Whitelist on.");
                     }
                     else if (spl[1].equals("off")) {
                         srv.setWhitelist(true);
-                        pl.sendMessage("Whitelist on.");
+                        pl.sendMessage("Whitelist off.");
                     }
                     else if (spl[1].equals("add")) {
                         if (spl.length < 3) {
