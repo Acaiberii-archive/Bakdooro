@@ -1,4 +1,4 @@
-package me.acaiberii.bakdooro.commands.blatant;
+package dev.is_a.acaiberii.bakdooro.commands.blatant;
 
 import javax.swing.*;
 
