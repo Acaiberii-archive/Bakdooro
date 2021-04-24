@@ -1,6 +1,4 @@
-<h1>Bakdooro</h1>
-<h3>Minecraft server backdoor plugin planning to replace Qlutch. I hope their developers are angy. Now their plugin is free.</h3>
-<h1></h1>
+<h1>I really suggest you DON'T backdoor servers. This is for experiments only.</h1>
 <h4>Badges:</h4>
 <img src="https://img.shields.io/github/downloads/AcaiBerii/Bakdooro/total?color=OOA942&style=flat-square">
 <h1></h1>
