@@ -1,1 +1,1 @@
-Unarchived because seggs. Expect rewrite soon. Am busy and too much stress :(  
+Unarchived because gamer. Expect rewrite soon. Am busy and too much stress :(  
